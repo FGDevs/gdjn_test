@@ -2,43 +2,69 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 
+
 module.exports = {
-  mode: "development",
-  entry: './src/index.js',
-  output: {
-    filename: "bundle.[fullhash].js",
-    path: path.resolve(__dirname, 'dist'),
+  /* config on how webpack emits results */
+  output    : { 
+    // template bundle filenaming
+    filename: "bundle.[fullhash].js"
+  }, 
+  ///////////////////////////////////////////////
+  /* config on how webpack resolves modules */
+  resolve   : {
+    // Add '.ts' and '.tsx' as resolvable ext.-s
+    extensions: ["*", ".js", ".jsx"],
+    // Set resolvable modules' dir
+    modules   : [__dirname,"src","node_modules"]
   },
-  resolve: {
-    modules: [__dirname, "src", "node_modules"],
-    extensions: ["*", ".js", ".jsx", ".tsx", ".ts"],
-  },
-  module: {
-    rules: [
+  ///////////////////////////////////////////////
+  /* config on how webpack treats modules */
+  module    : {
+    /* config on how to create module based on ext. */
+    rules     : [ 
       {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: ["babel-loader", "source-map-loader"],
+        test    : /\.jsx?$/,
+        use     : ['babel-loader'] ,
+        exclude : /node_modules/
       },
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test    : /\.css$/,
+        use     : ['style-loader', 'css-loader']
       },
       {
-        test: /\.png|svg|jpg|gif$/,
-        use: ["file-loader"],
+        test    : /\.png|svg|jpe?g|gif$/,
+        use     : [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          },
+          {
+            loader: 'file-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
       }
-    ].filter(Boolean),
+    ]
   },
-  plugins: [
+  ///////////////////////////////////////////////
+  /* config on what plugins used in webpack */
+  plugins   : [ 
+    // HtmlWebpackPlugin ; to generate HTML along with the bundles
     new HtmlWebpackPlugin({
+      title: "Gadjian Test",
       template: './src/index.html'
-    }),
-  ].filter(Boolean),
-  devServer: {
-    historyApiFallback: true,
-    hot: true,
-    open: true
-  },
-  devtool: 'source-map'
+    })
+  ]
 };
+
+/* 
+  DEFAULT PROPERTIES
+  // entry: './src/index.js',
+  // output: {
+      path: path.resolve(__dirname, 'dist')
+    }
+*/

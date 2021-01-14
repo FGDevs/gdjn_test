@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack serve",
-    "build": "webpack --config webpack.config.js --mode production"
+    "start": "webpack serve --open --mode=development --devtool=source-map",
+    "build": "webpack --config webpack.config.js --mode production",
+    "test": "jest --watch"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -14,16 +15,34 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
+    "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
+    "enzyme": "^3.11.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.0.0-beta.4",
-    "source-map-loader": "^2.0.0",
+    "jest": "^26.6.3",
+    "jest-transform-stub": "^2.0.0",
+    "react-test-renderer": "^17.0.1",
     "style-loader": "^2.0.0",
     "webpack": "^5.13.0",
     "webpack-cli": "^4.3.1",
     "webpack-dev-server": "^3.11.1"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>src/setupTests.js"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
+    },
+    "moduleNameMapper": {
+      "^.+.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
+    }
   }
 }
