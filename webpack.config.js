@@ -1,64 +1,51 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
-
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 
 module.exports = {
   /* config on how webpack emits results */
-  output    : { 
+  output: {
     // template bundle filenaming
-    filename: "bundle.[fullhash].js"
-  }, 
+    filename: "bundle.[fullhash].js",
+  },
   ///////////////////////////////////////////////
   /* config on how webpack resolves modules */
-  resolve   : {
+  resolve: {
     // Add '.ts' and '.tsx' as resolvable ext.-s
     extensions: ["*", ".js", ".jsx"],
     // Set resolvable modules' dir
-    modules   : [__dirname,"src","node_modules"]
+    modules: [__dirname, "src", "node_modules"],
   },
   ///////////////////////////////////////////////
   /* config on how webpack treats modules */
-  module    : {
+  module: {
     /* config on how to create module based on ext. */
-    rules     : [ 
+    rules: [
       {
-        test    : /\.jsx?$/,
-        use     : ['babel-loader'] ,
-        exclude : /node_modules/
+        test: /\.jsx?$/,
+        use: ["babel-loader"],
+        exclude: /node_modules/,
       },
       {
-        test    : /\.css$/,
-        use     : ['style-loader', 'css-loader']
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
       },
       {
-        test    : /\.png|svg|jpe?g|gif$/,
-        use     : [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192
-            }
-          },
-          {
-            loader: 'file-loader',
-            options: {
-              limit: 8192
-            }
-          }
+        test: /\.(png|svg|jpg|jpeg|gif|tiff)$/,
+        use: [
+            'file-loader?name=assets/[name].[ext]'
         ]
-      }
-    ]
+      },
+    ],
   },
   ///////////////////////////////////////////////
   /* config on what plugins used in webpack */
-  plugins   : [ 
+  plugins: [
     // HtmlWebpackPlugin ; to generate HTML along with the bundles
     new HtmlWebpackPlugin({
-      title: "Gadjian Test",
-      template: './src/index.html'
-    })
-  ]
+      // mirror html format while adding bundles
+      template: "./src/index.html",
+    }),
+  ],
 };
 
 /* 

@@ -1,0 +1,10 @@
+* {
+	font-family: 'Poppins', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+:root{
+	--primary  : #1cc1bf;
+	--secondary: #00354e;
+};

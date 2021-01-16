@@ -1,0 +1,1 @@
+export { default as Personlist } from './personlist';
