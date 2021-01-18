@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 export default (state=INITIAL_STATE, action) => {
 		switch(action.type) {
 			case 'SET' :
-				return Object.assign({},{...state,...action.payload,isLoading:false});
+				return {...state,...action.payload,isLoading:false};
 			case 'LOADING' :
 				return {...state,isLoading:true};
 			case 'RESET' :

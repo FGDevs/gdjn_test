@@ -10,7 +10,7 @@ const Card = ({ data }) => {
 	let begin = ((currentpage - 1) * userperpage);
 	let	end = begin + userperpage;
 
-	console.log(window.matchMedia("(max-width: 1066px)"))
+	// console.log(window.matchMedia("(max-width: 1066px)"))
 	if(!window.matchMedia("(max-width: 1066px)")){
 		return data.slice(begin,end).map((val,index) =>{{
 				return ( 
