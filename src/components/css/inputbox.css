@@ -1,0 +1,29 @@
+.inputBx {
+	display: flex;
+	align-items: center;
+	margin-top: 10;
+	padding: 20;
+	border: 1px solid gray;
+}
+
+.inputBx span { 
+	font-size: 30;
+	margin-right: 20;
+	color: var(--primary);
+}
+
+.inputBx input { 
+	width: 100%;
+	font-size: 16;
+	height: 30;
+	border: none;
+}
+
+.inputBx input:focus { 
+	outline: none;
+}
+
+@media (max-width: 1066px) 
+{
+
+}

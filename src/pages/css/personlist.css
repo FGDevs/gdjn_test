@@ -35,7 +35,6 @@ header .userBx .user-photo {
 	flex-direction : column;
 	flex-wrap      : wrap;
 	justify-content: center;
-	height         : 100%;
 	padding        : 40px 90px;
 }
 
@@ -66,20 +65,20 @@ header .userBx .user-photo {
 }
 
 .personlistcontent .listBx {
-	display           : flex;
-	/* flex-direction : column;
-	justify-content   : center;
-	align-items       : center; */
-	margin-top        : 50;
+	display        : flex;
+	flex-direction : column;
+	justify-content: center;
+	align-items    : center;
+	margin-top     : 20;
 }
 
 .personlistcontent .listBx .list-card {
-	position          : relative;
-	display           : flex;
-	flex-wrap         : wrap;
-	justify-content   : space-between;
-	align-items       : center;
-	/* width          : 100%; */
+	position       : relative;
+	display        : flex;
+	flex-wrap      : wrap;
+	justify-content: space-between;
+	align-items    : center;
+	width          : 100%;
 }
 
 .personlistcontent .listBx .list-paging {
@@ -104,17 +103,18 @@ header .userBx .user-photo {
 	}
 
 	.personlistcontent {
-		display: unset;
-		width  : 100%;
-		padding: 30;
+		padding: 30px;
 	}
 
 	.personlistcontent .subhead {
-		flex-direction    : column;
-		justify-content   : unset;
-		align-items       : center;
-		width             : auto;
-		/* margin         : 0 20px; */
+		flex-direction : column;
+		justify-content: unset;
+		align-items    : center;
+		width          : auto;
+	}
+
+	.personlistcontent .subhead .subhead-text {
+		width: 100%;
 	}
 
 	.personlistcontent .subhead .subhead-text h1 {

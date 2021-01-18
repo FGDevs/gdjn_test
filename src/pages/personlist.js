@@ -1,43 +1,18 @@
-import React, {useEffect, useState} from "react";
-import Axios from 'axios';
+import React, { useEffect, useState } from "react";
+
 import "./css/personlist.css";
-import { useDispatch, useSelector } from 'react-redux';
-import { PagingButton, Inputbox, Card, Paging } from "../components";
+import { useSelector } from 'react-redux';
+import { Button, Inputbox, Card, Paging } from "../components";
 import { FaPlus, FaSearch } from "react-icons/fa";
 
-const Personlist = () => {
-	const dispatch = useDispatch();
+const Personlist = ({User}) => {
 	const [Search,setSearch] = useState("");
-	const User = useSelector( state => state.Data.user);
+	// const User = useSelector( state => state.Data.user);
 
-	useEffect(() => {
-		let saveddata=JSON.parse(localStorage.getItem('data'));
-		if(!saveddata){
-			Axios.get("https://randomuser.me/api/?results=28")
-			.then(result => {
-				try {
-					dispatch({type:"LOADING"});
-					dispatch({
-						type:"SET",
-						user:result.data.results
-					});
-				} catch(error) {
-					console.error(error, "dispatch")
-				}
-			}).catch(error => {
-				console.error(error, "catched axios");
-			});
-		};
-		try {
-			dispatch({type:"LOADING"});
-			dispatch({
-				type:"SET",
-				payload:{user:saveddata}
-			});
-		} catch(error) {
-			console.error(error, "dispatch")
-		}
-	},[]);
+	console.log(User)
+	// useEffect(() => {
+	// 	console.log('a')
+	// }, [User])
 
   return (
 		<>
@@ -61,10 +36,10 @@ const Personlist = () => {
 						<Inputbox
 							leftIcon={<FaSearch />}
 							value={Search}
-							placeholder="Find Personels"
+							placeholder="Find Personnels"
 							handleOnChange={e=>setSearch(e.target.value)}
 						/>
-						<PagingButton
+						<Button
 							textColor="white"
 							label={"ADD PERSONNEL "}
 							rightIcon={<FaPlus />}
@@ -73,10 +48,16 @@ const Personlist = () => {
 				</div>
 				<div className="listBx">
 						<div className="list-card">
-							<Card data={Search?User.filter(User=>User.name.first.toLowerCase().includes(Search)):User}/>
+							{ User ?
+								<Card data={Search?User.filter(User=>User.name.first.toLowerCase().includes(Search)):User}/>
+								: null
+							}
 						</div>
 						<div className="list-paging">
-							<Paging data={Search?User.filter(User=>User.name.first.toLowerCase().includes(Search)):User}/>
+							{ User ?
+								<Paging data={Search?User.filter(User=>User.name.first.toLowerCase().includes(Search)):User}/>
+								: null
+							}
 						</div>
 				</div>
 			</div>

@@ -1,0 +1,5 @@
+@media (max-width: 1066px){
+	.pagingbutton {
+		display: none;
+	}
+}

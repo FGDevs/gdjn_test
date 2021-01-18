@@ -1,0 +1,86 @@
+.cardbox {
+	background: white;
+	height    : 460;
+	width     : 250;
+	overflow  : hidden;
+}
+
+.cardbox-head {
+	border-bottom  : 1px solid lightgray;
+	padding        : 10;
+	display        : flex;
+	width          : auto;
+	justify-content: space-between;
+}
+
+.cardbox .cardbox-head .head-id {
+	font-size: 12;
+}
+
+.cardbox .cardbox-head .head-id span {
+	color: var(--primary);
+}
+
+.cardbox .cardbox-head .head-option {
+	font-size: 20;
+}
+
+.cardbox .cardbox-personnelpic {
+	display        : flex;
+	flex-direction : column;
+	justify-content: center;
+	align-items    : center;
+	padding        : 10
+}
+
+.cardbox .cardbox-personnelpic .personnelpicBx {
+	border-bottom: 2px solid lightgray;
+	height       : 180;
+	width        : 180;
+	border-radius: 100%;
+	overflow     : hidden;
+}
+
+.cardbox .cardbox-personnelpic .personnelpicBx img {
+	height    : 100%;
+	width     : 100%;
+	object-fit: cover;
+}
+
+.cardbox .cardbox-details {
+	padding: 10px 20px;
+}
+
+.cardbox .cardbox-details p {
+	font-Size    : 14;
+	margin-bottom: 7;
+}
+
+@media (max-width: 1066px) {
+	.cardbox {
+		background: white;
+		height    : auto;
+		width     : 100%;
+		overflow  : hidden;
+		margin    : 15px 0;
+	}
+
+	.cardbox-user {
+		display: flex;
+		align-items: center;
+		padding: 20;
+	}
+
+	.cardbox .cardbox-details {
+		font-size: 20px;
+	}
+
+	.cardbox .cardbox-details p {
+		font-Size    : 25px;
+		font-weight  : 300;
+	}
+
+	.cardbox .cardbox-details .details-secondary {
+		display: none;
+	}
+}

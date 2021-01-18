@@ -7,15 +7,17 @@ module.exports = {
     // template bundle filenaming
     filename: "bundle.[fullhash].js",
   },
-  ///////////////////////////////////////////////
   /* config on how webpack resolves modules */
   resolve: {
     // Add '.ts' and '.tsx' as resolvable ext.-s
     extensions: ["*", ".js", ".jsx"],
     // Set resolvable modules' dir
-    modules: [__dirname, "src", "node_modules"],
-  },
-  ///////////////////////////////////////////////
+		modules: [__dirname, "src", "node_modules"],
+		fallback: {
+			"path": require.resolve("path-browserify")
+			// util: require.resolve("util/")
+		}
+	},
   /* config on how webpack treats modules */
   module: {
     /* config on how to create module based on ext. */
@@ -37,7 +39,6 @@ module.exports = {
       },
     ],
   },
-  ///////////////////////////////////////////////
   /* config on what plugins used in webpack */
   plugins: [
     // HtmlWebpackPlugin ; to generate HTML along with the bundles

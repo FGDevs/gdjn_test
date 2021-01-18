@@ -1,4 +1,5 @@
 import React from "react";
+import './css/inputbox.css';
 
 const Inputbox = ({
 	value,
@@ -7,7 +8,7 @@ const Inputbox = ({
 	placeholder,
 	handleOnChange,
 	}) => (
-  <div>
+  <div className="inputBx">
 		{ leftIcon ? <span> {leftIcon} </span> : null }
 		<input value			= {value} 
 					 placeholder= {placeholder? placeholder:""}

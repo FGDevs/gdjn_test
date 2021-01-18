@@ -1,8 +1,8 @@
 import React from "react";
-import './css/pagingbutton.css';
+import './css/button.css';
 
 const Button = ({ label, leftIcon, rightIcon, handleClick, disabled }) => (
-  <button className="pagingbutton" onClick={handleClick} disabled={disabled}>
+  <button className="mainbutton" onClick={handleClick} disabled={disabled}>
     { leftIcon ? <span> {leftIcon} </span> : null }
     { label } 
     { rightIcon ? <span> {rightIcon} </span> : null	}

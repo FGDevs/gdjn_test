@@ -7,6 +7,7 @@
 	 decide to make component name !== directory name
 */
 
+export {default as Button} from './buttons/button';
 export {default as PagingButton} from './buttons/pagingbutton';
 export {default as Card} from './cards/card';
 export {default as MCard} from './cards/mcard';
