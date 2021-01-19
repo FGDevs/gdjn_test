@@ -1,16 +1,19 @@
-import React from 'react';
-import '../css/card.css';
+import React, { useEffect } from 'react';
+import './css/card.css';
 import { useSelector, shallowEqual } from 'react-redux';
-import { dobFormatter } from '../../helpers';
+import { dobFormatter } from '../helpers';
 import { BsThreeDots } from 'react-icons/bs';
 
 const Card = ({ data }) => {
-	const { userperpage, currentpage, user } = useSelector( state => state.Data, shallowEqual );
+	const { userperpage, currentpage } = useSelector( state => state.Data, shallowEqual );
 
 	let begin = ((currentpage - 1) * userperpage);
 	let	end = begin + userperpage;
+	
+	useEffect(() => {
+		console.log('a')
+	}, [window.innerWidth])
 
-	// console.log(window.matchMedia("(max-width: 1066px)"))
 	if(!window.matchMedia("(max-width: 1066px)")){
 		return data.slice(begin,end).map((val,index) =>{{
 				return ( 
@@ -43,14 +46,14 @@ const Card = ({ data }) => {
 									<h5>Email</h5>
 									<p>{val.email}</p>
 								</div>
-								</div>
 							</div>
+						</div>
 					</div>
 				);
 			}
 		});
 	}else {
-		return user.map((val,index) =>{{
+		return data.map((val,index) =>{{
 			return ( 
 				<div className= "cardbox" key= {index}>
 					<div className= "cardbox-head">
@@ -85,10 +88,9 @@ const Card = ({ data }) => {
 						</div>
 				</div>
 			);
-		}
+		};
 	});
-	}
-
+	};
 };
 
 

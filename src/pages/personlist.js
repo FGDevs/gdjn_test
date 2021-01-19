@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useState } from "react";
 import "./css/personlist.css";
-import { useSelector } from 'react-redux';
 import { Button, Inputbox, Card, Paging } from "../components";
 import { FaPlus, FaSearch } from "react-icons/fa";
 
 const Personlist = ({User}) => {
 	const [Search,setSearch] = useState("");
-	// const User = useSelector( state => state.Data.user);
-
-	console.log(User)
-	// useEffect(() => {
-	// 	console.log('a')
-	// }, [User])
-
+	
   return (
 		<>
       <header className="head">
@@ -47,18 +39,26 @@ const Personlist = ({User}) => {
 					</div>
 				</div>
 				<div className="listBx">
-						<div className="list-card">
-							{ User ?
-								<Card data={Search?User.filter(User=>User.name.first.toLowerCase().includes(Search)):User}/>
-								: null
-							}
-						</div>
-						<div className="list-paging">
-							{ User ?
-								<Paging data={Search?User.filter(User=>User.name.first.toLowerCase().includes(Search)):User}/>
-								: null
-							}
-						</div>
+					<div className="list-card">
+						{ User? 
+							<Card data= {
+								Search? 
+								User.filter(User=>User.name.first.toLowerCase().includes(Search)):User}
+							/>
+							: 
+							null
+						}
+					</div>
+					<div className="list-paging">
+						{ User ?
+							<Paging data= {
+								Search? 
+								User.filter(User=>User.name.first.toLowerCase().includes(Search)):User}
+							/>
+							:
+							null
+						}
+					</div>
 				</div>
 			</div>
 		</>

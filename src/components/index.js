@@ -9,8 +9,7 @@
 
 export {default as Button} from './buttons/button';
 export {default as PagingButton} from './buttons/pagingbutton';
-export {default as Card} from './cards/card';
-export {default as MCard} from './cards/mcard';
+export {default as Card} from './card';
 export {default as Inputbox} from './inputbox';
 export {default as Sidebar} from './sidebar';
 export {default as Paging} from './paging';
